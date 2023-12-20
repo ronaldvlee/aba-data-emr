@@ -1,38 +1,26 @@
-# create-svelte
+# aba-data-emr
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## User Stories
 
-## Creating a project
+1. **As a therapist, I want to input patient data so that I can track their progress over time.**
 
-If you're seeing this, you've probably already done this step. Congrats!
+2. **As a therapist, I want to graph patient data so that I can visualize their behavior and progress.**
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+3. **As a therapist, I want to adjust patient behaviors so that I can help them improve.**
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Use Cases
 
-## Developing
+### Use Case: Input Patient Data
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- **Actor:** Therapist
+- **Description:** The therapist inputs patient data into the system. The data includes the number of correct trials, total correct, total trials, and any other relevant information.
 
-```bash
-npm run dev
+### Use Case: Graph Patient Data
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- **Actor:** Therapist
+- **Description:** The therapist uses the system to graph patient data. The system displays the data in a graphical format, allowing the therapist to visualize the patient's behavior and progress over time.
 
-## Building
+### Use Case: Adjust Patient Behaviors
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- **Actor:** Therapist
+- **Description:** The therapist uses the system to adjust patient behaviors. The system provides tools and resources to help the therapist adjust the patient's behavior in a way that promotes improvement.
