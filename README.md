@@ -25,7 +25,7 @@ This project is an EMR (Electronic Medical Records) portal system designed speci
   - Actor: Therapist
   - Description: The therapist creates a new dataset for each treatment plan and each month. This allows the therapist to track the progress of each plan separately and over time.
 
-4. **Use Case: Input Patient Data into the Corresponding Treatment Plan and Month Dataset**
+4. ~~**Use Case: Input Patient Data into the Corresponding Treatment Plan and Month Dataset**~~
   - Actor: Therapist
   - Description: The therapist inputs patient data into the corresponding treatment plan and month dataset. The data includes the number of correct trials, total correct, total trials, and any other relevant information.
 
