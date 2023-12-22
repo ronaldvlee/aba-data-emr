@@ -1,8 +1,6 @@
 <script lang="ts">
     import { writable } from 'svelte/store';
-    // import type { PageData } from './$types';
-    
-    // export let data: PageData;
+    // export let data: string;
 
     // TODO: Pass data from database into table
     let tableData = writable([
@@ -14,10 +12,9 @@
         [10, 9, 8, 8, 10, 9, 7, 8, 9, 8],
         [null, null, null, null, null, null, null, null, 10, 9]
     ]);
+    $: maxTrials = 12; // what is each cell out of
 
-    $: maxTrials = 12;
-
-    // Below: eslint says that it cannot handle null, it can handle null
+    // Below are "excel" functions: eslint says that it cannot handle null, it can handle null
     $: rowsTotal = $tableData.map(row => row.reduce((a, b) => a + (b !== null ? b : 0), 0)); // eslint-disable-line no-console
     $: totalTrials = $tableData.map(row => row.reduce((a, b) => a + (b !== null ? 1 : 0), 0) * maxTrials); // eslint-disable-line no-console
 
@@ -27,6 +24,11 @@
 
     // Editing table data
     function handleCellChange(event: Event, rowIndex: number, cellIndex: number) {
+
+        function convertToNumberIfValid(newValue: string | null) {
+            return !isNaN(Number(newValue)) && newValue != "" ? Number(newValue) : null
+        }
+
         let target = event.target as HTMLElement
         if (!target) return
 
@@ -35,7 +37,7 @@
             if (i === rowIndex) {
                 return row.map((cell, j) => {
                     if (j === cellIndex) 
-                        return !isNaN(Number(newValue)) && newValue != "" ? Number(newValue) : null
+                        return convertToNumberIfValid(newValue)
 
                     return cell
                 });
@@ -57,6 +59,11 @@
 
             if (next) next.focus()
         }
+    }
+
+    function addNullRow() {
+        let newRow = Array($tableData[0].length).fill(null);
+        tableData.update(data => [...data, newRow]);
     }
 </script>
 
@@ -86,6 +93,12 @@
                 <td class="px-4 py-2 border">{totalTrials[i]}</td>
             </tr>
         {/each}
+
+        <tr>
+            <td colspan={$tableData[0].length + 2}>
+                <button class="w-full text-center rounded-lg border bg-blue-500 text-lg p-2 text-white" on:click={addNullRow}>Add New Row</button>
+            </td>
+        </tr>
 
         <tr>
             <td colspan={$tableData[0].length}></td>
