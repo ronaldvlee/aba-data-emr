@@ -29,6 +29,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"flowbite-svelte": "^0.44.20"
+		"@lucia-auth/adapter-postgresql": "^2.0.2",
+		"flowbite-svelte": "^0.44.20",
+		"lucia": "^2.7.6",
+		"postgres": "^3.4.3"
 	}
 }
